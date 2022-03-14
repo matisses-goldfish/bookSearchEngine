@@ -1,3 +1,119 @@
+
+# MVC (Model-View-Controller) Blog
+[![License: ](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/)
+#### **Name:** Honore Nelson 
+#### **Deployed Link:**
+#### **Github Repo:** https://github.com/matisses-goldfish/bookSearchEngine
+---
+    
+##  Table of Contents:
+* [Description](#description)
+* [Walkthrough](#walkthrough)
+* [Application](#application)
+* [Technologies Used](#technologies-used)
+* [Usage Information](#usage)
+* [Contribution Guidelines](#contribution-guidelines)
+* [Authors](#authors)
+* [License](#license)
+* [Question](#questions)
+
+
+## Description:
+---
+This application is a fully functioning Google Books API search engine built convertered from a RESTful API to be a GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. It's already set up to allow users to save book searches to the back end. 
+
+
+## Walkthrough: 
+---
+### Click the img to begin the video- 
+[![walkthrough video](https://img.youtube.com/vi/number/0.jpg)](https://www.youtube.com/watch?v=number)
+
+
+## Application:
+---
+### Homepage-
+![homepage](assets/ss4.png)
+
+### Login-
+![signup page](assets/ss5.png)
+
+### Dashboard-
+![dashboard](assets/ss3.png)
+
+### Book Search-
+![Book search page](assets/ss3.png)
+
+    
+## Completed Criteria:
+---
+```md
+GIVEN a book search engine
+WHEN I load the search engine
+THEN I am presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button
+WHEN I click on the Search for Books menu option
+THEN I am presented with an input field to search for books and a submit button
+WHEN I am not logged in and enter a search term in the input field and click the submit button
+THEN I am presented with several search results, each featuring a book’s title, author, description, image, and a link to that book on the Google Books site
+WHEN I click on the Login/Signup menu option
+THEN a modal appears on the screen with a toggle between the option to log in or sign up
+WHEN the toggle is set to Signup
+THEN I am presented with three inputs for a username, an email address, and a password, and a signup button
+WHEN the toggle is set to Login
+THEN I am presented with two inputs for an email address and a password and login button
+WHEN I enter a valid email address and create a password and click on the signup button
+THEN my user account is created and I am logged in to the site
+WHEN I enter my account’s email address and password and click on the login button
+THEN I the modal closes and I am logged in to the site
+WHEN I am logged in to the site
+THEN the menu options change to Search for Books, an option to see my saved books, and Logout
+WHEN I am logged in and enter a search term in the input field and click the submit button
+THEN I am presented with several search results, each featuring a book’s title, author, description, image, and a link to that book on the Google Books site and a button to save a book to my account
+WHEN I click on the Save button on a book
+THEN that book’s information is saved to my account
+WHEN I click on the option to see my saved books
+THEN I am presented with all of the books I have saved to my account, each featuring the book’s title, author, description, image, and a link to that book on the Google Books site and a button to remove a book from my account
+WHEN I click on the Remove button on a book
+THEN that book is deleted from my saved books list
+WHEN I click on the Logout button
+THEN I am logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button  
+```
+
+
+## Technologies Used:
+---
+- **GraphQL** 
+- **Apollo Server**
+- **React**
+- **Express**
+- **Node**
+- **API**
+
+
+## Usage:
+---
+Begin the application by opening the link provided (), Create an account, and login! Want to add a book to your dashboard? simply click the add book button and watch the magic happen!
+     
+    
+## Contribution Guidelines:
+---
+Contribute to this project using the Github work flow model!
+
+    
+## Authors
+---
+* **Honore Nelson** - *Initial work* - [book search enigine](https://github.com/matisses-goldfish/bookSearchEngine)
+    
+## License
+---
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+<br></br>
+
+## Question
+---
+Any additional question? Reach out via Github!
+* Honore Nelson: https://github.com/matisses-goldfish
+
 # 21 MERN: Book Search Engine
 
 ## Your Task
@@ -88,35 +204,35 @@ In order for this application to use a GraphQL API, you’ll need to refactor th
 
 You’ll need to complete the following tasks in each of these back-end files:
 
-* `auth.js`: Update the auth middleware function to work with the GraphQL API.
+* DONE: `auth.js`: Update the auth middleware function to work with the GraphQL API.
 
-* `server.js`: Implement the Apollo Server and apply it to the Express server as middleware.
+* DONE: `server.js`: Implement the Apollo Server and apply it to the Express server as middleware.
 
 * `Schemas` directory:
 
-	* `index.js`: Export your typeDefs and resolvers.
+	* DONE: `index.js`: Export your typeDefs and resolvers.
 
-	* `resolvers.js`: Define the query and mutation functionality to work with the Mongoose models.
+	* DONE?:`resolvers.js`: Define the query and mutation functionality to work with the Mongoose models.
 
 		**Hint**: Use the functionality in the `user-controller.js` as a guide.
 
-	* `typeDefs.js`: Define the necessary `Query` and `Mutation` types:
+	*DONE: `typeDefs.js`: Define the necessary `Query` and `Mutation` types:
 
 		* `Query` type:
 
 			* `me`: Which returns a `User` type.
 		
-		* `Mutation` type:
+		*DONE:  `Mutation` type:
 
-			* `login`: Accepts an email and password as parameters; returns an `Auth` type.
+			*DONE: `login`: Accepts an email and password as parameters; returns an `Auth` type.
 
-			* `addUser`: Accepts a username, email, and password as parameters; returns an `Auth` type.
+			* DONE:`addUser`: Accepts a username, email, and password as parameters; returns an `Auth` type.
 
-			* `saveBook`: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a `User` type. (Look into creating what's known as an `input` type to handle all of these parameters!)
+			*DONE:  `saveBook`: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a `User` type. (Look into creating what's known as an `input` type to handle all of these parameters!)
 
-			* `removeBook`: Accepts a book's `bookId` as a parameter; returns a `User` type.
+			*DONE:  `removeBook`: Accepts a book's `bookId` as a parameter; returns a `User` type.
 			
-		* `User` type:
+		*DONE: `User` type:
 
 			* `_id`
 
@@ -128,11 +244,11 @@ You’ll need to complete the following tasks in each of these back-end files:
 
 			* `savedBooks` (This will be an array of the `Book` type.)
 
-		* `Book` type:
+		* DONE: `Book` type:
 
 			* `bookId` (Not the `_id`, but the book's `id` value returned from Google's Book API.)
 
-			* `authors` (An array of strings, as there may be more than one author.)
+			* ***POSSIBLE ISSUE***: `authors` (An array of strings, as there may be more than one author.)
 
 			* `description`
 
@@ -142,7 +258,7 @@ You’ll need to complete the following tasks in each of these back-end files:
 
 			* `link`
 
-		* `Auth` type:
+		*DONE: `Auth` type:
 
 			* `token`
 
@@ -153,9 +269,9 @@ You’ll need to complete the following tasks in each of these back-end files:
 
 You'll need to create the following front-end files:
 
-* `queries.js`: This will hold the query `GET_ME`, which will execute the `me` query set up using Apollo Server.
+*DONE: `queries.js`: This will hold the query `GET_ME`, which will execute the `me` query set up using Apollo Server.
 
-* `mutations.js`:
+*DONE?: `mutations.js`:
 
 	* `LOGIN_USER` will execute the `loginUser` mutation set up using Apollo Server.
 
@@ -167,15 +283,15 @@ You'll need to create the following front-end files:
 
 Additionally, you’ll need to complete the following tasks in each of these front-end files:
 
-* `App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
+*DONE: `App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
 	
-* `SearchBooks.js`:
+*DONE?: `SearchBooks.js`:
 
-	* Use the Apollo `useMutation()` Hook to execute the `SAVE_BOOK` mutation in the `handleSaveBook()` function instead of the `saveBook()` function imported from the `API` file.
+	*Use the Apollo `useMutation()` Hook to execute the `SAVE_BOOK` mutation in the `handleSaveBook()` function instead of the `saveBook()` function imported from the `API` file.
 
 	* Make sure you keep the logic for saving the book's ID to state in the `try...catch` block! 
 
-* `SavedBooks.js`:
+*DONE: `SavedBooks.js`:
 
 	* Remove the `useEffect()` Hook that sets the state for `UserData`.
 
@@ -183,9 +299,9 @@ Additionally, you’ll need to complete the following tasks in each of these fro
 
 	* Use the `useMutation()` Hook to execute the `REMOVE_BOOK` mutation in the `handleDeleteBook()` function instead of the `deleteBook()` function that's imported from `API` file. (Make sure you keep the `removeBookId()` function in place!)
 
-* `SignupForm.js`: Replace the `addUser()` functionality imported from the `API` file with the `ADD_USER` mutation functionality.
+*DONE: `SignupForm.js`: Replace the `addUser()` functionality imported from the `API` file with the `ADD_USER` mutation functionality.
 
-* `LoginForm.js`: Replace the `loginUser()` functionality imported from the `API` file with the `LOGIN_USER` mutation functionality.
+*DONE: `LoginForm.js`: Replace the `loginUser()` functionality imported from the `API` file with the `LOGIN_USER` mutation functionality.
 
 
 ## Grading Requirements
