@@ -57,12 +57,15 @@ const SearchBooks = () => {
   };
 
   // create function to handle saving a book to our database
-  const handleSaveBook = async (bookId) => {
+  const HandleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    const response = useMutation(SAVE_BOOK);
+
 
     if (!token) {
       return false;
@@ -70,7 +73,6 @@ const SearchBooks = () => {
 
     //TODO: check the useMutation(SAVE_BOOK); logic
     try {
-      const [response] = useMutation( SAVE_BOOK );
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -131,7 +133,7 @@ const SearchBooks = () => {
                     <Button
                       disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
                       className='btn-block btn-info'
-                      onClick={() => handleSaveBook(book.bookId)}>
+                      onClick={() => HandleSaveBook(book.bookId)}>
                       {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
                         ? 'This book has already been saved!'
                         : 'Save this Book!'}

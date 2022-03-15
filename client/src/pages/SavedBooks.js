@@ -11,7 +11,7 @@ import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useQuery( GET_ME );
+  const [userData, setUserData] = useQuery(GET_ME);
 
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
@@ -42,16 +42,16 @@ const SavedBooks = () => {
   // }, [userDataLength]);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
-  const handleDeleteBook = async (bookId) => {
+  const HandleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    
+    const response =  useMutation(REMOVE_BOOK);
 
     if (!token) {
       return false;
     }
 
     try {
-      const [response] =  useMutation( REMOVE_BOOK );
-
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
@@ -92,7 +92,7 @@ const SavedBooks = () => {
                   <Card.Title>{book.title}</Card.Title>
                   <p className='small'>Authors: {book.authors}</p>
                   <Card.Text>{book.description}</Card.Text>
-                  <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
+                  <Button className='btn-block btn-danger' onClick={() => HandleDeleteBook(book.bookId)}>
                     Delete this Book!
                   </Button>
                 </Card.Body>
