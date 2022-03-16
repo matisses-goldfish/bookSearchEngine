@@ -25,7 +25,7 @@ const SearchBooks = () => {
     return () => saveBookIds(savedBookIds);
   });
 
-  const HandleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     if (!searchInput) {
@@ -56,7 +56,7 @@ const SearchBooks = () => {
     }
   };
 
-  const HandleSaveBook = async (bookId) => {
+  const handleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
@@ -70,15 +70,10 @@ const SearchBooks = () => {
     }
 
     try {
-      const {data} = await saveBook({
-        variables: { input: bookToSave }
+      const { data } = await saveBook({
+        variables: { bookData: { ...bookToSave } },
       });
-
-      // if (!saveBook.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-
-      // if book successfully saves to user's account, save book id to state
+      console.log(savedBookIds);
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
       console.error(err);
@@ -87,23 +82,23 @@ const SearchBooks = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
+      <Jumbotron fluid className="text-light bg-dark">
         <Container>
           <h1>Search for Books!</h1>
-          <Form onSubmit={HandleFormSubmit}>
+          <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
                 <Form.Control
-                  name='searchInput'
+                  name="searchInput"
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  type='text'
-                  size='lg'
-                  placeholder='Search for a book'
+                  type="text"
+                  size="lg"
+                  placeholder="Search for a book"
                 />
               </Col>
               <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
+                <Button type="submit" variant="success" size="lg">
                   Submit Search
                 </Button>
               </Col>
@@ -121,22 +116,29 @@ const SearchBooks = () => {
         <CardColumns>
           {searchedBooks.map((book) => {
             return (
-              <Card key={book.bookId} border='dark'>
+              <Card key={book.bookId} border="dark">
                 {book.image ? (
-                  <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
+                  <Card.Img
+                    src={book.image}
+                    alt={`The cover for ${book.title}`}
+                    variant="top"
+                  />
                 ) : null}
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
-                  <p className='small'>Authors: {book.authors}</p>
+                  <p className="small">Authors: {book.authors}</p>
                   <Card.Text>{book.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
-                      className='btn-block btn-info'
-                      onClick={() => HandleSaveBook(book.bookId)}>
-                      {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
-                        ? 'This book has already been saved!'
-                        : 'Save this Book!'}
+                      disabled={savedBookIds?.some(
+                        (savedId) => savedId === book.bookId
+                      )}
+                      className="btn-block btn-info"
+                      onClick={() => handleSaveBook(book.bookId)}
+                    >
+                      {savedBookIds?.some((savedId) => savedId === book.bookId)
+                        ? 'Book Already Saved!'
+                        : 'Save This Book!'}
                     </Button>
                   )}
                 </Card.Body>
@@ -148,5 +150,6 @@ const SearchBooks = () => {
     </>
   );
 };
+
 
 export default SearchBooks;

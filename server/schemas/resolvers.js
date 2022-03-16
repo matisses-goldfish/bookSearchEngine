@@ -8,20 +8,16 @@ const resolvers = {
 
         //get a user by username
         me: async (parent, args, context) => {
-
-            if(context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
-                .select('-__v -password')
-                .populate('books')
-            
-                return userData;
+            if (context.user) {
+              const userData = await User.findOne({ _id: context.user._id })
+              .select('-__v -password');
+      
+              return userData;
             }
-
-            throw new AuthenticationError('Please login to view your profile')
-
+      
+            throw new AuthenticationError('Not currently logged in');
+          },
         },
-
-    },
 
     Mutation: {
 
@@ -50,7 +46,7 @@ const resolvers = {
     
         },
 
-        saveBook: async (parent, {bookData}, context) => {
+        saveBook: async (parent, { bookData }, context) => {
             if (context.user) {
                           
              const updatedUser =  await User.findByIdAndUpdate(
