@@ -1,12 +1,15 @@
 const { User, Book } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { param } = require('../routes');
+// const { param } = require('../routes');
 
 const resolvers = {
 
     Query: {
+
+        //get a user by username
         me: async (parent, args, context) => {
+
             if(context.user) {
                 const userData = await User.findOne({})
                 .select('-__v -password')
@@ -14,7 +17,8 @@ const resolvers = {
             
                 return userData;
             }
-            throw new AuthenticationError('Not logged in')
+
+            throw new AuthenticationError('Please login to view your profile')
 
         },
 
@@ -33,13 +37,13 @@ const resolvers = {
             const user = await User.findOne({email});
 
             if(!user) {
-                throw new AuthenticationError('Please try again, incorrect credentials');
+                throw new AuthenticationError('No user found with this email address!');
             }
 
             const correctPw = await user.isCorrectPassword(password);
 
             if(!correctPw) {
-                throw new AuthenticationError('Please try again, Incorrect credentials');
+                throw new AuthenticationError('Incorrect credentials, please try again!');
             }
 
             const token = signToken(user);
@@ -49,8 +53,7 @@ const resolvers = {
 
         saveBook: async (parent, args, context) => {
             if (context.user) {
-              const savedBook = await Book.create({ ...args, username: context.user.username });
-          
+                          
              const updatedUser =  await User.findByIdAndUpdate(
                 { _id: context.user._id },
                 { $addToSet: { savedBooks: args.input } },
@@ -60,7 +63,7 @@ const resolvers = {
             return updatedUser;
             }
           
-            throw new AuthenticationError('Please login to continue!');
+            throw new AuthenticationError('Please login to use this function!');
         },
 
 
@@ -76,7 +79,7 @@ const resolvers = {
             return updatedUser;
             }
 
-            throw new AuthenticationError('Please login to continue!');
+            throw new AuthenticationError('Please login to use this function!');
         }
     }
 };

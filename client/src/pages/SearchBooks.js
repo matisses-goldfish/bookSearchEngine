@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
-
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 import { SAVE_BOOK } from '../utils/mutations';
-import { useMutation } from "@apollo/client";
-
+import {useMutation} from '@apollo/client';
 
 const SearchBooks = () => {
-  // create state for holding returned google api data
+
   const [searchedBooks, setSearchedBooks] = useState([]);
-  // create state for holding our search field data
+
   const [searchInput, setSearchInput] = useState('');
 
-  // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+
+  const [ saveBook ] = useMutation(SAVE_BOOK );
+
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
@@ -24,8 +25,7 @@ const SearchBooks = () => {
     return () => saveBookIds(savedBookIds);
   });
 
-  // create method to search for books and set state on form submit
-  const handleFormSubmit = async (event) => {
+  const HandleFormSubmit = async (event) => {
     event.preventDefault();
 
     if (!searchInput) {
@@ -36,7 +36,7 @@ const SearchBooks = () => {
       const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {
-        throw new Error('something went wrong!');
+        throw new Error('Im sorry, something went wrong with the server!');
       }
 
       const { items } = await response.json();
@@ -56,27 +56,27 @@ const SearchBooks = () => {
     }
   };
 
-  // create function to handle saving a book to our database
   const HandleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
+ 
+
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    const response = useMutation(SAVE_BOOK);
-
 
     if (!token) {
       return false;
     }
 
-    //TODO: check the useMutation(SAVE_BOOK); logic
     try {
+      const {data} = await saveBook({
+        variables: { input: bookToSave }
+      });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // if (!saveBook.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
@@ -90,7 +90,7 @@ const SearchBooks = () => {
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
           <h1>Search for Books!</h1>
-          <Form onSubmit={handleFormSubmit}>
+          <Form onSubmit={HandleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
                 <Form.Control
