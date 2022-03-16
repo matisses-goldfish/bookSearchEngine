@@ -10,6 +10,8 @@
 * [Description](#description)
 * [Walkthrough](#walkthrough)
 * [Application](#application)
+* [Completed Criteria](#completed-criteria)
+* [Future Development](#future-development)
 * [Technologies Used](#technologies-used)
 * [Usage Information](#usage)
 * [Contribution Guidelines](#contribution-guidelines)
@@ -32,16 +34,13 @@ This application is a fully functioning Google Books API search engine built con
 ## Application:
 ---
 ### Homepage-
-![homepage](assets/ss4.png)
+![search page](assets/ss4.png)
 
 ### Login-
-![signup page](assets/ss5.png)
+![signup page](assets/ss1.png)
 
 ### Dashboard-
 ![dashboard](assets/ss3.png)
-
-### Book Search-
-![Book search page](assets/ss3.png)
 
     
 ## Completed Criteria:
@@ -70,13 +69,16 @@ WHEN I am logged in and enter a search term in the input field and click the sub
 THEN I am presented with several search results, each featuring a book’s title, author, description, image, and a link to that book on the Google Books site and a button to save a book to my account
 WHEN I click on the Save button on a book
 THEN that book’s information is saved to my account
+WHEN I click on the Logout button
+THEN I am logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button  
+```
+
+## Future Development:
+---
 WHEN I click on the option to see my saved books
 THEN I am presented with all of the books I have saved to my account, each featuring the book’s title, author, description, image, and a link to that book on the Google Books site and a button to remove a book from my account
 WHEN I click on the Remove button on a book
 THEN that book is deleted from my saved books list
-WHEN I click on the Logout button
-THEN I am logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button  
-```
 
 
 ## Technologies Used:

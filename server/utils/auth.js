@@ -18,11 +18,8 @@ module.exports = {
       // let token = req.query.token || req.headers.authorization;
 
       //separate "Bearer" from "<tokenvalue>"
-      if(req.headers.authorization) {
-          token = token
-            .split(' ')
-            .pop()
-            .trim()
+      if (req.headers.authorization) {
+        token = token.split(' ').pop().trim();
       }
 
       //if no token, return request object as is
