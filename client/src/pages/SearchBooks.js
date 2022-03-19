@@ -5,6 +5,11 @@ import Auth from '../utils/auth';
 import { saveBook, searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
+// new imports to execute mern
+import { SAVE_BOOK } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+
+
 const SearchBooks = () => {
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -53,9 +58,10 @@ const SearchBooks = () => {
   };
 
   // create function to handle saving a book to our database
-  const handleSaveBook = async (bookId) => {
+  const HandleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+    const [response] = useMutation( SAVE_BOOK );
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -64,12 +70,12 @@ const SearchBooks = () => {
       return false;
     }
 
+    // take in new parms
     try {
-      const response = await saveBook(bookToSave, token);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      const { data } = await response({
+        // pass through vars while spreading api data
+        variables: { bookData: {...bookToSave}}
+      })
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
@@ -126,7 +132,7 @@ const SearchBooks = () => {
                     <Button
                       disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
                       className='btn-block btn-info'
-                      onClick={() => handleSaveBook(book.bookId)}>
+                      onClick={() => HandleSaveBook(book.bookId)}>
                       {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
                         ? 'This book has already been saved!'
                         : 'Save this Book!'}

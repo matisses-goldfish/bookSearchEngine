@@ -154,9 +154,9 @@ You’ll need to complete the following tasks in each of these back-end files:
 
 You'll need to create the following front-end files:
 
-* `queries.js`: This will hold the query `GET_ME`, which will execute the `me` query set up using Apollo Server.
+* DONE: `queries.js`: This will hold the query `GET_ME`, which will execute the `me` query set up using Apollo Server.
 
-* `mutations.js`:
+* DONE:`mutations.js`:
 
 	* `LOGIN_USER` will execute the `loginUser` mutation set up using Apollo Server.
 
@@ -168,9 +168,9 @@ You'll need to create the following front-end files:
 
 Additionally, you’ll need to complete the following tasks in each of these front-end files:
 
-* `App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
+* DONE: `App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
 	
-* `SearchBooks.js`:
+* DONE: `SearchBooks.js`:
 
 	* Use the Apollo `useMutation()` Hook to execute the `SAVE_BOOK` mutation in the `handleSaveBook()` function instead of the `saveBook()` function imported from the `API` file.
 
@@ -178,15 +178,15 @@ Additionally, you’ll need to complete the following tasks in each of these fro
 
 * `SavedBooks.js`:
 
-	* Remove the `useEffect()` Hook that sets the state for `UserData`.
+	* DONE: Remove the `useEffect()` Hook that sets the state for `UserData`.
 
-	* Instead, use the `useQuery()` Hook to execute the `GET_ME` query on load and save it to a variable named `userData`.
+	* DONE: Instead, use the `useQuery()` Hook to execute the `GET_ME` query on load and save it to a variable named `userData`.
 
-	* Use the `useMutation()` Hook to execute the `REMOVE_BOOK` mutation in the `handleDeleteBook()` function instead of the `deleteBook()` function that's imported from `API` file. (Make sure you keep the `removeBookId()` function in place!)
+	* DONE: Use the `useMutation()` Hook to execute the `REMOVE_BOOK` mutation in the `handleDeleteBook()` function instead of the `deleteBook()` function that's imported from `API` file. (Make sure you keep the `removeBookId()` function in place!)
 
-* `SignupForm.js`: Replace the `addUser()` functionality imported from the `API` file with the `ADD_USER` mutation functionality.
+* DONE:`SignupForm.js`: Replace the `addUser()` functionality imported from the `API` file with the `ADD_USER` mutation functionality.
 
-* `LoginForm.js`: Replace the `loginUser()` functionality imported from the `API` file with the `LOGIN_USER` mutation functionality.
+* DONE: `LoginForm.js`: Replace the `loginUser()` functionality imported from the `API` file with the `LOGIN_USER` mutation functionality.
 
 
 ## Grading Requirements
