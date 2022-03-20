@@ -61,7 +61,7 @@ const SearchBooks = () => {
   const HandleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
-    const [response] = useMutation( SAVE_BOOK );
+    const [saveBook] = useMutation( SAVE_BOOK );
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -72,7 +72,7 @@ const SearchBooks = () => {
 
     // take in new parms
     try {
-      const { data } = await response({
+      const { data } = await saveBook({
         // pass through vars while spreading api data
         variables: { bookData: {...bookToSave}}
       })

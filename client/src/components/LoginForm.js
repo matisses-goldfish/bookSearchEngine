@@ -15,7 +15,7 @@ const LoginForm = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   // usemutation can be placed within a try
-  const [loginUser, {error}] =  useMutation(LOGIN_USER);
+  const [loginUser] =  useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
