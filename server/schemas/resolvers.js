@@ -18,7 +18,7 @@ const resolvers = {
   },
 // Update: Mutation Type- 
   Mutation: {
-    //   login: Accepts an email and password as parameters; returns an `Auth` type.
+    //   login: Accepts an email and password as parameters; returns an Auth type.
     login: async (parent, { email, password }) => {
         const user = await User.findOne({ email });
   
@@ -35,16 +35,16 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-    // `addUser`: Accepts a username, email, and password as parameters; returns an `Auth` type.
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    // addUser: Accepts a username, email, and password as parameters; returns an Auth type.
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
 
       const token = signToken(user);
       return { token, user };
     },
-    // `saveBook`: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a `User` type.
+    // saveBook: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a User type.
 
-    // TODO: (Look into creating what's known as an `input` type to handle all of these parameters!)
+    // TODO: (Look into creating what's known as an input type to handle all of these parameters!)
     saveBook: async (parent, { authors, description, title, bookId, image, link }, context) => {
       if (context.user) {
         const updateSavedBooks = await User.findByIdAndUpdate(
@@ -57,7 +57,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    // `removeBook`: Accepts a book's `bookId` as a parameter; returns a `User` type.
+    // removeBook: Accepts a book's bookId as a parameter; returns a User type.
     removeBook: async (parent, { bookId }, context) => {
         if (context.user) {
             const updateSavedBooks = await User.findByIdAndUpdate(

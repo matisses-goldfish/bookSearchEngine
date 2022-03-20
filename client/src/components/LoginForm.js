@@ -15,7 +15,7 @@ const LoginForm = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   // usemutation can be placed within a try
-  const [response] =  useMutation(LOGIN_USER);
+  const [loginUser, {error}] =  useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -39,12 +39,12 @@ const LoginForm = () => {
       // }
       
       // adjust prams for useMutation
-      const { data } = await response ({
+      const { data } = await loginUser({
         variables: { ...userFormData },
       });
 
       console.log(data);
-      Auth.login(data.response.token);
+      Auth.login(data.loginUser.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);

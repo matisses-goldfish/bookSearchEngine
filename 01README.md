@@ -127,7 +127,6 @@ You’ll need to complete the following tasks in each of these back-end files:
 			* `bookCount`
 
 			* `savedBooks` (This will be an array of the `Book` type.)
-			<!-- bookData = bookInput -->
 
 		* DONE:`Book` type:
 

@@ -19,7 +19,7 @@ const server = new ApolloServer({
 })
 
 // true or false??
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // if we're in production, serve client/build as static assets
@@ -28,12 +28,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/', (req, res) => {
-  res.sendFile(path.join(_dirname, '../client/build/index.js'))
+  res.sendFile(path.join(_dirname, '../client/'))
 });
 
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
-  ApolloServer.applyMiddleware({ app });
+  server.applyMiddleware({ app });
 
   db.once('open', () => {
     app.listen(PORT, () => {
