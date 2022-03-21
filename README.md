@@ -1,4 +1,4 @@
-***NOTE TO GRADER: heroku link is not functioning properly***
+***NOTE TO GRADER: heroku link is not functioning properly I provided a demo think in my submission to display functionality of code***
 # Book Search Engine
 [![License: ](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/)
 #### **Name:** Honore Nelson 
@@ -79,8 +79,6 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 ## Future Development:
 ---
-Deployed to Heroku
-
 WHEN I click on the Remove button on a book
 THEN that book is deleted from my saved books list
 
