@@ -1,5 +1,8 @@
+// TASK: `typeDefs.js`: Define the necessary `Query` and `Mutation` types:
+
 const { gql } = require('apollo-server-express');
 
+// would I need password for the User type?
 const typeDefs = gql`
 type User {
   _id: ID!
@@ -11,12 +14,12 @@ type User {
 
 
   type Book {
-    bookId: ID!
     authors: [String]
     description: String
-    title: String!
+    bookId: ID!
     image: String
     link: String
+    title: String!
   }
 
   type Auth {
@@ -29,12 +32,12 @@ type User {
   }
 
   input bookInfo {
-    bookId: ID!
     authors: [String]
-    description: String!
-    title: String!
+    description: String
+    bookId: ID!
     image: String
     link: String
+    title: String!
   }
   
   type Mutation {

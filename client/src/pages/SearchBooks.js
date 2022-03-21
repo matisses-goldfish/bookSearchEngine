@@ -1,3 +1,7 @@
+// TASKS:
+// 1. Use the Apollo `useMutation()` Hook to execute the `SAVE_BOOK` mutation in the `handleSaveBook()` function instead of the `saveBook()` function imported from the `API` file.
+// 2. Make sure you keep the logic for saving the book's ID to state in the `try...catch` block!
+
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
@@ -78,8 +82,6 @@ const SearchBooks = () => {
         // pass through vars while spreading api data
         variables: { bookData: { ...bookToSave }}
       });
-      // console log out book ids to make sure json is stringifying our data
-      console.log(savedBookIds);
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);

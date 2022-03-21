@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client';
+// **reference type defs and resolvers**
 
+// TASK: LOGIN_USER` will execute the `loginUser` mutation set up using Apollo Server.
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -12,6 +14,7 @@ export const LOGIN_USER = gql`
   }
 `;
 
+// TASK: `ADD_USER` will execute the `addUser` mutation.
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -24,6 +27,7 @@ export const ADD_USER = gql`
   }
 `;
 
+// TASK: `SAVE_BOOK` will execute the `saveBook` mutation.
 export const SAVE_BOOK = gql`
   mutation saveBook($bookData: bookInfo!) {
     saveBook(bookData: $bookData) {
@@ -31,17 +35,18 @@ export const SAVE_BOOK = gql`
       username
       email
       savedBooks {
-        bookId
         authors
         description
-        title
+        bookId
         image
         link
+        title
       }
     }
   }
 `;
 
+// TASK: `REMOVE_BOOK` will execute the `removeBook` mutation.
 export const REMOVE_BOOK = gql`
   mutation removeBook($bookId: ID!) {
     removeBook(bookId: $bookId) {
@@ -49,12 +54,12 @@ export const REMOVE_BOOK = gql`
       username
       email
       savedBooks {
-        bookId
         authors
         description
-        title
+        bookId
         image
         link
+        title
       }
     }
   }

@@ -1,5 +1,5 @@
-// Updated: Define the query and mutation functionality to work with the Mongoose models.
-// code based on activity 26
+// TASK: Define the query and mutation functionality to work with the Mongoose models.
+// **reference activity 26**
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -25,13 +25,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('Incorrect credentials, please try again!');
+        throw new AuthenticationError('Please try again or create an account!');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials, please try again!');
+        throw new AuthenticationError('Incorrect password, please try again!');
       }
 
       const token = signToken(user);
@@ -44,18 +44,17 @@ const resolvers = {
       
       return { token, user };
     },
-    // saveBook: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a User type.
 
-    // TODO: (Look into creating what's known as an input type to handle all of these parameters!)
+    // saveBook: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a User type.
     saveBook: async (parent, { bookData }, context) => {
       if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate(
+        const userSaveBooks = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { savedBooks: bookData } },
           { new: true }
         );
 
-        return updatedUser;
+        return userSaveBooks;
       }
 
       throw new AuthenticationError('Please login to use this function!');
@@ -63,14 +62,14 @@ const resolvers = {
     // removeBook: Accepts a book's bookId as a parameter; returns a User type.
     removeBook: async (parent, { bookId }, context) => {
         if (context.user) {
-            const updatedUser = await User.findByIdAndUpdate(
+            const userRemoveBooks = await User.findByIdAndUpdate(
                 { _id: context.user._id },
-                // oppsite of save push/ull
+                // oppsite of save push/pull
                 { $pull: { savedBooks: bookId } },
                 { new: true }
             );
     
-            return updatedUser;
+            return userRemoveBooks;
           }
           throw new AuthenticationError('please login to use this function!');
     },

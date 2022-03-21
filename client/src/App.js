@@ -1,7 +1,6 @@
 
-// Updtaed:
-//`App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
-
+// TASK:
+// `App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
 import React from 'react';
 import {
   ApolloClient,
@@ -34,7 +33,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
+// Apollo Provider implimentation
 function App() {
   return (
     <ApolloProvider client={client}>
