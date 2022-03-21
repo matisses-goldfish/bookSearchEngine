@@ -1,4 +1,4 @@
-***NOTE TO GRADER: heroku link is not functioning properly I provided a demo think in my submission to display functionality of code***
+***NOTE TO GRADER: heroku link is not functioning properly so I provided a demo think in my submission to display functionality of code***
 # Book Search Engine
 [![License: ](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/)
 #### **Name:** Honore Nelson 
