@@ -1,4 +1,3 @@
-// formated after activity 26
 
 // Updtaed:
 //`App.js`: Create an Apollo Provider to make every request work with the Apollo Server.
