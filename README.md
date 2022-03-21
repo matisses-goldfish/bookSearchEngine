@@ -1,5 +1,5 @@
 
-# MVC (Model-View-Controller) Blog
+# Book Search Engine
 [![License: ](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/)
 #### **Name:** Honore Nelson 
 #### **Deployed Link:** https://booksearchengine02.herokuapp.com/
@@ -28,19 +28,19 @@ This application is a fully functioning Google Books API search engine built con
 ## Walkthrough: 
 ---
 ### Click the img to begin the video- 
-[![walkthrough video](https://img.youtube.com/vi/number/0.jpg)](https://www.youtube.com/watch?v=number)
+[![walkthrough video](https://img.youtube.com/vi/IxaUg_VmiLQ/0.jpg)](https://www.youtube.com/watch?v=IxaUg_VmiLQ)
 
 
 ## Application:
 ---
-### Homepage-
-![search page](assets/ss4.png)
+### Login Page-
+![login page](assets/ss-login.png)
 
-### Login-
-![signup page](assets/ss1.png)
+### Search for Books-
+![book search page](assets/ss-searchbooks.png)
 
-### Dashboard-
-![dashboard](assets/ss3.png)
+### Saved Books-
+![saved books page](assets/ss-savedbooks.png)
 
     
 ## Completed Criteria:
@@ -72,8 +72,6 @@ WHEN I click on the Save button on a book
 THEN that book’s information is saved to my account
 WHEN I click on the option to see my saved books
 THEN I am presented with all of the books I have saved to my account, each featuring the book’s title, author, description, image, and a link to that book on the Google Books site and a button to remove a book from my account
-WHEN I click on the Remove button on a book
-THEN that book is deleted from my saved books list
 WHEN I click on the Logout button
 THEN I am logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button  
 ```
@@ -83,6 +81,8 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 ---
 Deployed to Heroku
 
+WHEN I click on the Remove button on a book
+THEN that book is deleted from my saved books list
 
 ## Technologies Used:
 ---
@@ -96,7 +96,7 @@ Deployed to Heroku
 
 ## Usage:
 ---
-Begin the application by opening the link provided (), Create an account, and login! Want to add a book to your dashboard? simply click the add book button and watch the magic happen!
+Begin the application by opening the link provided (https://github.com/matisses-goldfish/bookSearchEngine), Create an account, and login! Want to add a book to your dashboard? simply click the add book button and watch the magic happen!
      
     
 ## Contribution Guidelines:
